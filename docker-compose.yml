@@ -4,3 +4,8 @@ services:
     build: ./api_java
     ports:
       - 8080:8080
+
+  python:
+    build: ./python_fastapi
+    ports:
+      - 8000:8000
