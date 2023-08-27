@@ -1,0 +1,6 @@
+version: "3"
+services:
+  java:
+    build: ./api_java
+    ports:
+      - 8080:8080
