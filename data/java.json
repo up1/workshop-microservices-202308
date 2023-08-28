@@ -1,0 +1,17 @@
+{
+    "service": {
+        "name": "java",
+        "tags": [
+            "java"
+        ],
+        "address": "java",
+        "port": 8080,
+        "check": {
+            "id": "java",
+            "name": "Consul DNS TCP on port 8080",
+            "tcp": "java:8080",
+            "interval": "10s",
+            "timeout": "1s"
+        }
+    }
+}

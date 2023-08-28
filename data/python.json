@@ -1,0 +1,18 @@
+{
+    "service": {
+        "name": "python",
+        "tags": [
+            "python",
+            "fastapi"
+        ],
+        "address": "python",
+        "port": 8000,
+        "check": {
+            "id": "python",
+            "name": "Consul DNS TCP on port 8000",
+            "tcp": "python:8000",
+            "interval": "10s",
+            "timeout": "1s"
+        }
+    }
+}

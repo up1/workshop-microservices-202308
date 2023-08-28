@@ -16,3 +16,10 @@ services:
     build: ./python_fastapi
     ports:
       - 8000:8000
+
+  consul:
+    image: consul:1.15.4
+    ports:
+      - 8500:8500
+    volumes:
+      - ./data:/consul/config
