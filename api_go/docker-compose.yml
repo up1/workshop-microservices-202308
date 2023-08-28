@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  api:
+    build: ./
+    ports:
+      - 1323:1323
+      
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: sample_db
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: mypassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/data.sql:/docker-entrypoint-initdb.d/1.sql

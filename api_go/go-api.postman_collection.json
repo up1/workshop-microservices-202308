@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "cfca79ac-1e82-4c79-b2b7-0b3bb6d9c133",
+		"name": "go-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1453931",
+		"_collection_link": "https://red-firefly-245852.postman.co/workspace/XYZ~e14b2de0-4177-40ee-a22d-9b83d5d73aff/collection/1453931-cfca79ac-1e82-4c79-b2b7-0b3bb6d9c133?action=share&creator=1453931&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Hello API",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Schema is valid\", function () {",
+							"    var schema = {",
+							"        type: \"object\",",
+							"        properties: {",
+							"            message: {",
+							"                type: \"string\"",
+							"            }",
+							"        },",
+							"        required: [\"message\"],",
+							"    };",
+							"",
+							"    var response = pm.response.json();",
+							"    pm.expect(tv4.validate(response, schema)).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:1323/hello",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "1323",
+					"path": [
+						"hello"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
