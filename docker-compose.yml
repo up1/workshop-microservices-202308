@@ -23,3 +23,11 @@ services:
       - 8500:8500
     volumes:
       - ./data:/consul/config
+  
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    ports:
+      - 127.0.0.1:3001:3001
+    volumes:
+      - ./kuma_data:/app/data
