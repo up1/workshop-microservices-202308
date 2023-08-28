@@ -60,17 +60,22 @@ services:
       - "4317" # accept OpenTelemetry Protocol (OTLP) over gRPC
       - "4318" # accept OpenTelemetry Protocol (OTLP) over HTTP
       - "14250" # accept model.proto
-    restart: on-failure
     depends_on:
       - cassandra-schema
 
   cassandra:
     image: cassandra:4.1.2
+    healthcheck:
+      test: ["CMD-SHELL", "[ $$(nodetool statusgossip) = running ]"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
   cassandra-schema:
     image: jaegertracing/jaeger-cassandra-schema:1.47.0
     depends_on:
-      - cassandra
+      cassandra:
+        condition: service_healthy
 
   jaeger-query:
     image: jaegertracing/jaeger-query:1.47.0
@@ -80,7 +85,6 @@ services:
     ports:
       - "16686:16686"
       - "16687:16687"
-    restart: on-failure
     depends_on:
       - cassandra-schema
 
@@ -93,6 +97,5 @@ services:
     ports:
       - "4317" # OTLP gRPC receiver
       - "4318" # OTLP http receiver
-    restart: on-failure
     depends_on:
       - jaeger-collector

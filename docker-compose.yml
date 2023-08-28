@@ -5,6 +5,13 @@ services:
     ports:
       - 8080:8080
 
+  java_multi:
+    build: 
+      context: ./api_java
+      dockerfile: ./Dockerfile_multi
+    ports:
+      - 8080:8080
+
   python:
     build: ./python_fastapi
     ports:
