@@ -1,15 +1,15 @@
 {
     "service": {
-        "name": "java",
+        "name": "java_multi",
         "tags": [
             "java"
         ],
-        "address": "java",
+        "address": "java_multi",
         "port": 8080,
         "check": {
-            "id": "java",
+            "id": "java_multi",
             "name": "Consul DNS TCP on port 8080",
-            "tcp": "java:8080",
+            "tcp": "java_multi:8080",
             "interval": "10s",
             "timeout": "1s"
         }
